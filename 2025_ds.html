@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日の天気と服装</title>
+    <style>
+        /* ここからCSS */
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        /* タイトルを角ゴシック（サンセリフ体）、青色に設定 */
+        .weather-title {
+            font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+            color: blue;
+        }
+        /* ボタンのスタイル */
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        /* 結果表示エリアのスタイル */
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="weather-title">今日の天気は何？</h1>
+
+    <button onclick="showAdvice('sunny')">晴れ</button>
+    <button onclick="showAdvice('cloudy')">曇り</button>
+    <button onclick="showAdvice('rainy')">雨</button>
+
+    <div id="result">
+        <p>ボタンを押して、服装のヒントを見てみよう！</p>
+    </div>
+
+    <script>
+        // ここからJavaScript
+        function showAdvice(weather) {
+            const resultDiv = document.getElementById('result');
+            let advice = '';
+
+            if (weather === 'sunny') {
+                advice = `
+                    <h3>☀️ 晴れの日のアドバイス</h3>
+                    <ul>
+                        <li><b>服装：</b>Tシャツや半袖シャツが快適です。日差しが強いので、薄手の羽織るものがあると便利です。</li>
+                        <li><b>持ち物：</b>帽子、サングラス、日焼け止めを忘れずに！</li>
+                        <li><b>気をつけて！：</b>水分補給をこまめに行い、熱中症に注意しましょう。</li>
+                    </ul>
+                `;
+            } else if (weather === 'cloudy') {
+                advice = `
+                    <h3>☁️ 曇りの日のアドバイス</h3>
+                    <ul>
+                        <li><b>服装：</b>半袖でも過ごせますが、少し肌寒く感じることも。カーディガンなど調整しやすい服装がおすすめです。</li>
+                        <li><b>持ち物：</b>念のため、折りたたみ傘があると安心です。</li>
+                        <li><b>気をつけて！：</b>曇っていても紫外線は届いています。油断せず対策を！</li>
+                    </ul>
+                `;
+            } else if (weather === 'rainy') {
+                advice = `
+                    <h3>☔️ 雨の日のアドバイス</h3>
+                    <ul>
+                        <li><b>服装：</b>濡れても乾きやすい素材や、少し肌寒いので長袖がおすすめです。足元は防水の靴が良いでしょう。</li>
+                        <li><b>持ち物：</b>傘は必須です。撥水性のあるバッグやタオルもあると便利です。</li>
+                        <li><b>気をつけて！：</b>足元が滑りやすくなっているので、転ばないように注意してください。</li>
+                    </ul>
+                `;
+            }
+
+            resultDiv.innerHTML = advice;
+        }
+    </script>
+
+</body>
+</html>
